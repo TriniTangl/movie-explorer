@@ -1,7 +1,7 @@
 import { ImageList, ImageListItem, ImageListItemBar, styled } from '@mui/material';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { IMAGES_PATH } from '../config';
+import { COVER_PLACEHOLDER_FOR_MAIN_PAGE, IMAGES_PATH } from '../config';
 import { mapGenres } from '../helpers/helper';
 
 const ImgStyled = styled('img')({
@@ -19,9 +19,15 @@ const Movies = ({ movies, genres }) => {
             <Link to={ `/movie/${ movie.id }` }>
               {
                 movie.poster_path
-                  && (
+                  ? (
                     <ImgStyled
                       src={ `${ IMAGES_PATH }/w300${ movie.poster_path }` }
+                      alt={ movie.title }
+                    />
+                  )
+                  : (
+                    <ImgStyled
+                      src={ COVER_PLACEHOLDER_FOR_MAIN_PAGE }
                       alt={ movie.title }
                     />
                   )
