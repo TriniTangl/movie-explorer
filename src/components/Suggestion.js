@@ -4,6 +4,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { COVER_PLACEHOLDER, IMAGES_PATH } from '../config';
+import { mapGenres } from '../helpers/helper';
 import { searchMovies } from '../redux/search';
 
 const PaperStyled = styled(Paper)({
@@ -26,7 +27,7 @@ const LinkStyled = styled(Link)({
   textDecoration: 'none',
 });
 
-const Suggestion = ({ movies }) => {
+const Suggestion = ({ movies, genres }) => {
   const dispatch = useDispatch();
 
   const inputOnChange = (event) => {
@@ -108,7 +109,7 @@ const Suggestion = ({ movies }) => {
                                     { item.title }
                                   </Typography>
                                   <Typography variant="caption">
-                                    { item.title }
+                                    { mapGenres(item.genre_ids, genres) }
                                   </Typography>
                                 </Grid>
                               </Grid>
