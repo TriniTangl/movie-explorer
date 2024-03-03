@@ -48,7 +48,7 @@ const Suggestion = ({ movies, genres }) => {
   };
 
   return (
-    <Downshift>
+    <Downshift itemToString={ () => '' }>
       { ({
            getInputProps,
            getItemProps,
