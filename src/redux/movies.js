@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { cleanFromDuplicates } from '../helpers/helper';
 
 const initialState = {
   results: [],
@@ -22,7 +23,7 @@ const moviesSlice = createSlice({
     fetchedPopularMovies: (state, action) => {
       return {
         ...state,
-        results: [...state.results, ...action.payload.results],
+        results: cleanFromDuplicates(state.results, action.payload.results),
         hasMore: action.payload.page < action.payload.total_pages,
         totalResults: action.payload.total_results,
         page: action.payload.page,

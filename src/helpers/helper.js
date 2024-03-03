@@ -6,3 +6,15 @@ export function mapGenres(genresIds, genresList) {
       .join(', ')
     : '';
 }
+
+export function cleanFromDuplicates(itemsList, newItems) {
+  const newItemsList = [...itemsList];
+
+  for (const item of newItems) {
+    if (newItemsList.findIndex((elem) => elem.id === item.id) < 0) {
+      newItemsList.push(item);
+    }
+  }
+
+  return newItemsList;
+}
