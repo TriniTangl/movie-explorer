@@ -3,7 +3,7 @@ import Downshift from 'downshift';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { COVER_PLACEHOLDER, IMAGES_PATH } from '../config';
+import { COVER_PLACEHOLDER_FOR_SEARCHING, IMAGES_PATH } from '../config';
 import { mapGenres } from '../helpers/helper';
 import { searchMovies } from '../redux/search';
 
@@ -107,7 +107,7 @@ const Suggestion = ({ movies, genres }) => {
                                       )
                                       : (
                                         <ImgStyled
-                                          src={ COVER_PLACEHOLDER }
+                                          src={ COVER_PLACEHOLDER_FOR_SEARCHING }
                                           alt={ item.title }
                                         />
                                       )
