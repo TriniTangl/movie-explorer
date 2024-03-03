@@ -79,7 +79,7 @@ const Suggestion = ({ movies, genres }) => {
                   square={ true }
                 >
                   {
-                    movies.results
+                    movies
                       .slice(0, 10)
                       .filter(
                         (item) => !inputValue || item.title.toLowerCase().includes(inputValue.toLowerCase()),

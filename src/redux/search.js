@@ -36,4 +36,6 @@ const searchSlice = createSlice({
 
 export const { searchMovies, fetchedSearchMovies, resetState } = searchSlice.actions;
 
+export const getSearchState = (state) => state.search;
+
 export default searchSlice.reducer;

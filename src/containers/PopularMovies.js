@@ -4,12 +4,17 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import { useDispatch, useSelector } from 'react-redux';
 import Loader from '../components/Loader';
 import Movies from '../components/Movies';
-import { getPopularMovies, resetState } from '../redux/movies';
+import { getGenresState } from '../redux/genres';
+import { getMoviesState, getPopularMovies, resetState } from '../redux/movies';
 
 const PopularMovies = () => {
   const dispatch = useDispatch();
-  const { movies } = useSelector((store) => store);
-  const { genres } = useSelector((store) => store.genres);
+  const hasMore = useSelector((store) => getMoviesState(store).hasMore);
+  const page = useSelector((store) => getMoviesState(store).page);
+  const isFetching = useSelector((store) => getMoviesState(store).isFetching);
+  const totalResults = useSelector((store) => getMoviesState(store).totalResults);
+  const movies = useSelector((store) => getMoviesState(store).results);
+  const genres = useSelector((store) => getGenresState(store).genres);
 
   useEffect(() => {
     dispatch(getPopularMovies());
@@ -20,22 +25,22 @@ const PopularMovies = () => {
   }, [dispatch]);
 
   const loadMore = () => {
-    if (movies.hasMore) {
-      dispatch(getPopularMovies(movies.page + 1));
+    if (hasMore) {
+      dispatch(getPopularMovies(page + 1));
     }
   };
 
   return (
-    movies.page === 0 && movies.isFetching
+    page === 0 && isFetching
       ? <Loader />
       : <>
         <Typography component="h2" variant="h3" gutterBottom={ true }>
           Popular Movies
         </Typography>
         <InfiniteScroll
-          dataLength={ movies.totalResults }
+          dataLength={ totalResults }
           next={ loadMore }
-          hasMore={ movies.hasMore }
+          hasMore={ hasMore }
           loader={ <Loader /> }
           style={ { overflow: 'hidden' } }
           endMessage={ <p>Yay! You have seen it all!</p> }

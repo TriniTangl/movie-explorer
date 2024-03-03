@@ -30,4 +30,6 @@ const genresSlice = createSlice({
 
 export const { getGenres, fetchedGenres, resetState } = genresSlice.actions;
 
+export const getGenresState = (state) => state.genres;
+
 export default genresSlice.reducer;
