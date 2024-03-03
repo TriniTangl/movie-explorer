@@ -27,6 +27,15 @@ const LinkStyled = styled(Link)({
   textDecoration: 'none',
 });
 
+const TitleStyled = styled(Typography)({
+  color: 'black',
+  paddingTop: 10,
+});
+
+const CaptionStyled = styled(Typography)({
+  color: 'black',
+});
+
 const Suggestion = ({ movies, genres }) => {
   const dispatch = useDispatch();
 
@@ -105,12 +114,12 @@ const Suggestion = ({ movies, genres }) => {
                                   }
                                 </Grid>
                                 <Grid item={ true }>
-                                  <Typography variant="h4">
+                                  <TitleStyled variant="h4">
                                     { item.title }
-                                  </Typography>
-                                  <Typography variant="caption">
+                                  </TitleStyled>
+                                  <CaptionStyled variant="caption">
                                     { mapGenres(item.genre_ids, genres) }
-                                  </Typography>
+                                  </CaptionStyled>
                                 </Grid>
                               </Grid>
                             </LinkStyled>
