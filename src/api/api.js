@@ -17,4 +17,10 @@ export default class TheMovieDbApi {
 
     return response.json();
   }
+
+  getPopularMovies = async (page = 1) => {
+    const response = await fetch(`${ this.apiBaseUrl }/movie/popular?api_key=${ this.apiKey }&page=${ page }`);
+
+    return response.json();
+  };
 }
