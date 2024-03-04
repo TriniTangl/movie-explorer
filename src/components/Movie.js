@@ -38,7 +38,7 @@ const Movie = ({ movie, recommendations, genres }) => {
   return (
     <>
       <GridStyled container={ true } spacing={ 2 }>
-        <Grid item={ true } md={ 3 }>
+        <Grid item={ true } md={ 3 } xs={ 12 }>
           {
             movie.poster_path
               ? <ImgStyled
@@ -51,7 +51,7 @@ const Movie = ({ movie, recommendations, genres }) => {
               />
           }
         </Grid>
-        <Grid item={ true } md={ 9 }>
+        <Grid item={ true } md={ 9 } xs={ 12 }>
           <Typography component="h1" variant="h3" gutterBottom={ true }>
             { movie.title }
           </Typography>

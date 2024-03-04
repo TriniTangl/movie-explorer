@@ -1,4 +1,4 @@
-import { ImageList, ImageListItem, ImageListItemBar, styled } from '@mui/material';
+import { ImageList, ImageListItem, ImageListItemBar, styled, useMediaQuery, useTheme } from '@mui/material';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { COVER_PLACEHOLDER_FOR_MAIN_PAGE, IMAGES_PATH } from '../config';
@@ -10,12 +10,19 @@ const ImgStyled = styled('img')({
   objectFit: 'cover',
 });
 
+const ImageListItemStyled = styled(ImageListItem)({
+  overflow: 'hidden',
+});
+
 const Movies = ({ movies, genres }) => {
+  const theme = useTheme();
+  const matchDownMd = useMediaQuery(theme.breakpoints.down('sm'));
+
   return (
-    <ImageList cols={ 5 } rowHeight={ 365 } gap={ 12 }>
+    <ImageList cols={ matchDownMd ? 1 : 5 } rowHeight={ matchDownMd ? 580 : 365 } gap={ 12 }>
       {
         movies.map((movie) => (
-          <ImageListItem key={ movie.id }>
+          <ImageListItemStyled key={ movie.id }>
             <Link to={ `/movie/${ movie.id }` }>
               {
                 movie.poster_path
@@ -37,7 +44,7 @@ const Movies = ({ movies, genres }) => {
                 subtitle={ <span>{ mapGenres(movie.genre_ids, genres) }</span> }
               />
             </Link>
-          </ImageListItem>
+          </ImageListItemStyled>
         ))
       }
     </ImageList>
