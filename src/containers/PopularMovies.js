@@ -11,10 +11,11 @@ const PopularMovies = () => {
   const dispatch = useDispatch();
   const hasMore = useSelector((store) => getMoviesState(store).hasMore);
   const page = useSelector((store) => getMoviesState(store).page);
-  const isFetching = useSelector((store) => getMoviesState(store).isFetching);
+  const isFetchingMovies = useSelector((store) => getMoviesState(store).isFetching);
   const totalResults = useSelector((store) => getMoviesState(store).totalResults);
   const movies = useSelector((store) => getMoviesState(store).results);
   const genres = useSelector((store) => getGenresState(store).genres);
+  const isFetchingGenres = useSelector((store) => getGenresState(store).isFetching);
 
   useEffect(() => {
     dispatch(getPopularMovies());
@@ -31,7 +32,7 @@ const PopularMovies = () => {
   };
 
   return (
-    page === 0 && isFetching
+    page === 0 && (isFetchingMovies || isFetchingGenres)
       ? <Loader />
       : <>
         <Typography component="h2" variant="h3" gutterBottom={ true }>
