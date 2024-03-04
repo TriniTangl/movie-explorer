@@ -35,6 +35,19 @@ const Movie = ({ movie, recommendations, genres }) => {
     return runtime ? `${ hours } ${ minutes }` : '';
   };
 
+  const formatDate = (date) => {
+    return date
+      ? new Date(date).toLocaleDateString(
+        'en-US',
+        {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        },
+      )
+      : '';
+  };
+
   return (
     <>
       <GridStyled container={ true } spacing={ 2 }>
@@ -59,14 +72,7 @@ const Movie = ({ movie, recommendations, genres }) => {
           { getDetailsBlock('Genres:', movie.genres?.map((genre) => genre.name).join(', ')) }
           { getDetailsBlock('Country:', movie.production_countries?.map((country) => country.name).join(', ')) }
           { getDetailsBlock('Duration:', formatRuntime(movie.runtime)) }
-          { getDetailsBlock('Release Date:', new Date(movie.release_date).toLocaleDateString(
-            'en-US',
-            {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric',
-            },
-          )) }
+          { getDetailsBlock('Release Date:', formatDate(movie.release_date)) }
           { getDetailsBlock('Overview:', movie.overview) }
         </Grid>
       </GridStyled>
