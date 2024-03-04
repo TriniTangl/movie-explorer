@@ -25,6 +25,7 @@ const ImgStyled = styled('img')({
 const LinkStyled = styled(Link)({
   display: 'block',
   textDecoration: 'none',
+  width: '100%',
 });
 
 const TitleStyled = styled(Typography)({
