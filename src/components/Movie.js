@@ -71,14 +71,16 @@ const Movie = ({ movie, recommendations, genres }) => {
         </Grid>
       </GridStyled>
       {
-        recommendations && recommendations.length && (
-          <>
-            <Typography component="h2" variant="h4" gutterBottom={ true }>
-              Recommended
-            </Typography>
-            <Movies movies={ recommendations } genres={ genres } />
-          </>
-        )
+        recommendations && recommendations.length
+          ? (
+            <>
+              <Typography component="h2" variant="h4" gutterBottom={ true }>
+                Recommended
+              </Typography>
+              <Movies movies={ recommendations } genres={ genres } />
+            </>
+          )
+          : null
       }
     </>
   );
