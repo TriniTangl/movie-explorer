@@ -1,6 +1,5 @@
 import { Grid, MenuItem, Paper, styled, TextField, Typography } from '@mui/material';
 import Downshift from 'downshift';
-import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { COVER_PLACEHOLDER_FOR_SEARCHING, IMAGES_PATH } from '../config';

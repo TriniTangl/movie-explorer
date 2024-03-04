@@ -1,5 +1,4 @@
 import { CircularProgress, styled } from '@mui/material';
-import React from 'react';
 
 const LoaderWrapper = styled('div')(({ theme }) => ({
   display: 'flex',

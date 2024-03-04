@@ -1,5 +1,4 @@
 import { ImageList, ImageListItem, ImageListItemBar, styled, useMediaQuery, useTheme } from '@mui/material';
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { COVER_PLACEHOLDER_FOR_MAIN_PAGE, IMAGES_PATH } from '../config';
 import { mapGenres } from '../helpers/helper';

@@ -1,5 +1,4 @@
 import { Grid, styled, Typography } from '@mui/material';
-import React from 'react';
 import { COVER_PLACEHOLDER_FOR_MAIN_PAGE, IMAGES_PATH } from '../config';
 import Movies from './Movies';
 
