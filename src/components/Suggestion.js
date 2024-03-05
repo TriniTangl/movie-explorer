@@ -1,4 +1,4 @@
-import { Autocomplete, Grid, MenuItem, styled, TextField, Typography } from '@mui/material';
+import { Autocomplete, Grid, MenuItem, styled, TextField, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { COVER_PLACEHOLDER, IMAGES_PATH } from '../config';
@@ -16,17 +16,17 @@ const ImgStyled = styled('img')({
   objectFit: 'cover',
 });
 
-const TitleStyled = styled(Typography)({
+const TypographyStyled = styled(Typography)({
   color: 'white',
-  paddingTop: 10,
-});
-
-const SubtitleStyled = styled(Typography)({
-  color: 'white',
+  display: 'block',
+  width: '100%',
+  textWrap: 'wrap',
 });
 
 const Suggestion = ({ movies, genres }) => {
   const dispatch = useDispatch();
+  const theme = useTheme();
+  const matchDownSm = useMediaQuery(theme.breakpoints.down('sm'));
 
   const inputOnChange = (event) => {
     if (event.target.value) {
@@ -42,7 +42,6 @@ const Suggestion = ({ movies, genres }) => {
 
   return (
     <Autocomplete
-      blurOnSelect={ true }
       getOptionLabel={ (movie) => movie.title }
       options={ movies }
       onChange={ autocompleteOnChange }
@@ -53,7 +52,7 @@ const Suggestion = ({ movies, genres }) => {
           key={ movie.id }
         >
           <LinkStyled to={ `/movie/${ movie.id }` }>
-            <Grid container={ true } spacing={ 8 }>
+            <Grid container={ true } spacing={ 4 } wrap="nowrap">
               <Grid item={ true }>
                 {
                   movie.poster_path
@@ -72,12 +71,12 @@ const Suggestion = ({ movies, genres }) => {
                 }
               </Grid>
               <Grid item={ true }>
-                <TitleStyled variant="h4">
+                <TypographyStyled variant={ matchDownSm ? 'h6' : 'h4' }>
                   { movie.title }
-                </TitleStyled>
-                <SubtitleStyled variant="subtitle1">
+                </TypographyStyled>
+                <TypographyStyled variant={ matchDownSm ? 'subtitle2' : 'subtitle1' }>
                   { mapGenres(movie.genre_ids, genres) }
-                </SubtitleStyled>
+                </TypographyStyled>
               </Grid>
             </Grid>
           </LinkStyled>
