@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
 import { useSelector } from 'react-redux';
-import SuggestionNew from '../components/SuggestionNew';
+import Suggestion from '../components/Suggestion';
 import { getGenresState } from '../redux/genres';
 import { getSearchState } from '../redux/search';
 
@@ -10,7 +10,7 @@ const SearchMovieSuggestion = () => {
 
   return (
     <Box sx={ { mt: 2, mb: 4 } }>
-      <SuggestionNew movies={ movies } genres={ genres } />
+      <Suggestion movies={ movies } genres={ genres } />
     </Box>
   );
 };

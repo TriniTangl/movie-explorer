@@ -24,7 +24,7 @@ const SubtitleStyled = styled(Typography)({
   color: 'white',
 });
 
-const SuggestionNew = ({ movies, genres }) => {
+const Suggestion = ({ movies, genres }) => {
   const dispatch = useDispatch();
 
   const inputOnChange = (event) => {
@@ -95,4 +95,4 @@ const SuggestionNew = ({ movies, genres }) => {
   );
 };
 
-export default SuggestionNew;
+export default Suggestion;
