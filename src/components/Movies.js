@@ -15,10 +15,10 @@ const ImageListItemStyled = styled(ImageListItem)({
 
 const Movies = ({ movies, genres }) => {
   const theme = useTheme();
-  const matchDownMd = useMediaQuery(theme.breakpoints.down('sm'));
+  const matchDownSm = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
-    <ImageList cols={ matchDownMd ? 1 : 5 } rowHeight={ matchDownMd ? 580 : 365 } gap={ 12 }>
+    <ImageList cols={ matchDownSm ? 1 : 5 } rowHeight={ matchDownSm ? 580 : 365 } gap={ 12 }>
       {
         movies.map((movie) => (
           <ImageListItemStyled key={ movie.id }>
