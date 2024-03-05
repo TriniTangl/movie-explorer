@@ -58,7 +58,7 @@ const Suggestion = ({ movies, genres }) => {
                   movie.poster_path
                     ? (
                       <ImgStyled
-                        src={ `${ IMAGES_PATH }/w92${ movie.poster_path }` }
+                        src={ `${ IMAGES_PATH }/w154${ movie.poster_path }` }
                         alt={ movie.title }
                       />
                     )
