@@ -1,12 +1,12 @@
 import { delay, all, call, put, takeLatest, takeLeading } from 'redux-saga/effects';
 import TheMovieDbApi from '../api/api';
-import { API_KEY } from '../config';
+import { AUTH_TOKEN } from '../config';
 import { fetchedGenres, getGenres } from '../redux/genres';
 import { fetchedMovie, getMovie } from '../redux/movie';
 import { fetchedPopularMovies, getPopularMovies } from '../redux/movies';
 import { fetchedSearchMovies, searchMovies } from '../redux/search';
 
-const api = new TheMovieDbApi(API_KEY);
+const api = new TheMovieDbApi(AUTH_TOKEN);
 
 function* fetchGenres() {
   yield put(fetchedGenres(yield call(api.getGenres)));

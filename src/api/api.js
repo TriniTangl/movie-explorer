@@ -1,14 +1,20 @@
 export default class TheMovieDbApi {
   apiBaseUrl = 'https://api.themoviedb.org/3';
-  apiKey;
+  fetchOptions;
 
-  constructor(apiKey) {
-    this.apiKey = apiKey;
+  constructor(authToken) {
+    this.fetchOptions = {
+      method: 'GET',
+      headers: {
+        accept: 'application/json',
+        Authorization: `Bearer ${ authToken }`,
+      },
+    };
   }
 
   searchMovies = async (query) => {
     const response = await fetch(
-      `${ this.apiBaseUrl }/search/movie?api_key=${ this.apiKey }&query=${ query }`,
+      `${ this.apiBaseUrl }/search/movie?query=${ query }`, this.fetchOptions,
     );
 
     return response.json();
@@ -16,7 +22,7 @@ export default class TheMovieDbApi {
 
   getGenres = async () => {
     const response = await fetch(
-      `${ this.apiBaseUrl }/genre/movie/list?api_key=${ this.apiKey }`,
+      `${ this.apiBaseUrl }/genre/movie/list?`, this.fetchOptions,
     );
 
     return response.json();
@@ -24,7 +30,7 @@ export default class TheMovieDbApi {
 
   getPopularMovies = async (page = 1) => {
     const response = await fetch(
-      `${ this.apiBaseUrl }/movie/popular?api_key=${ this.apiKey }&page=${ page }`,
+      `${ this.apiBaseUrl }/movie/popular?page=${ page }`, this.fetchOptions,
     );
 
     return response.json();
@@ -32,7 +38,7 @@ export default class TheMovieDbApi {
 
   getMovie = async (id) => {
     const response = await fetch(
-      `${ this.apiBaseUrl }/movie/${ id }?api_key=${ this.apiKey }&append_to_response=recommendations`,
+      `${ this.apiBaseUrl }/movie/${ id }?append_to_response=recommendations`, this.fetchOptions,
     );
 
     return response.json();
