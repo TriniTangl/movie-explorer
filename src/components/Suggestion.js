@@ -12,7 +12,8 @@ const LinkStyled = styled(Link)({
 });
 
 const ImgStyled = styled('img')({
-  height: '100%',
+  width: 100,
+  objectFit: 'cover',
 });
 
 const TitleStyled = styled(Typography)({
