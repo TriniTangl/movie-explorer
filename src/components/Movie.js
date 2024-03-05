@@ -1,5 +1,5 @@
 import { Grid, styled, Typography } from '@mui/material';
-import { COVER_PLACEHOLDER_FOR_MAIN_PAGE, IMAGES_PATH } from '../config';
+import { COVER_PLACEHOLDER, IMAGES_PATH } from '../config';
 import Movies from './Movies';
 
 const GridStyled = styled(Grid)(({ theme }) => ({
@@ -58,7 +58,7 @@ const Movie = ({ movie, recommendations, genres }) => {
                 alt={ movie.title }
               />
               : <ImgStyled
-                src={ COVER_PLACEHOLDER_FOR_MAIN_PAGE }
+                src={ COVER_PLACEHOLDER }
                 alt={ movie.title }
               />
           }

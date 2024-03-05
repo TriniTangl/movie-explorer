@@ -1,7 +1,7 @@
 import { Autocomplete, Grid, MenuItem, styled, TextField, Typography } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { COVER_PLACEHOLDER_FOR_SEARCHING, IMAGES_PATH } from '../config';
+import { COVER_PLACEHOLDER, IMAGES_PATH } from '../config';
 import { mapGenres } from '../helpers/helper';
 import { searchMovies, resetState } from '../redux/search';
 
@@ -64,7 +64,7 @@ const Suggestion = ({ movies, genres }) => {
                     )
                     : (
                       <ImgStyled
-                        src={ COVER_PLACEHOLDER_FOR_SEARCHING }
+                        src={ COVER_PLACEHOLDER }
                         alt={ movie.title }
                       />
                     )

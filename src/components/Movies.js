@@ -1,6 +1,6 @@
 import { ImageList, ImageListItem, ImageListItemBar, styled, useMediaQuery, useTheme } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { COVER_PLACEHOLDER_FOR_MAIN_PAGE, IMAGES_PATH } from '../config';
+import { COVER_PLACEHOLDER, IMAGES_PATH } from '../config';
 import { mapGenres } from '../helpers/helper';
 
 const ImgStyled = styled('img')({
@@ -33,7 +33,7 @@ const Movies = ({ movies, genres }) => {
                   )
                   : (
                     <ImgStyled
-                      src={ COVER_PLACEHOLDER_FOR_MAIN_PAGE }
+                      src={ COVER_PLACEHOLDER }
                       alt={ movie.title }
                     />
                   )
