@@ -1,5 +1,5 @@
 import { Grid, styled, Typography } from '@mui/material';
-import { COVER_PLACEHOLDER, IMAGES_PATH } from '../config';
+import { COVER_PLACEHOLDER, IMAGES_PATH } from '../constants/config';
 import Movies from './Movies';
 
 const GridStyled = styled(Grid)(({ theme }) => ({

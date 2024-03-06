@@ -1,6 +1,6 @@
 import { delay, all, call, put, takeLatest, takeLeading } from 'redux-saga/effects';
 import TheMovieDbApi from '../api/api';
-import { AUTH_TOKEN } from '../config';
+import { AUTH_TOKEN } from '../constants/config';
 import { fetchedGenres, getGenres } from '../redux/genres';
 import { fetchedMovie, getMovie } from '../redux/movie';
 import { fetchedPopularMovies, getPopularMovies } from '../redux/movies';

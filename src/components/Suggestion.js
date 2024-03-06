@@ -1,7 +1,7 @@
 import { Autocomplete, Grid, MenuItem, styled, TextField, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { COVER_PLACEHOLDER, IMAGES_PATH } from '../config';
+import { COVER_PLACEHOLDER, IMAGES_PATH } from '../constants/config';
 import { mapGenres } from '../helpers/helper';
 import { searchMovies, resetState } from '../redux/search';
 

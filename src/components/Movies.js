@@ -1,6 +1,6 @@
 import { ImageList, ImageListItem, ImageListItemBar, styled, useMediaQuery, useTheme } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { COVER_PLACEHOLDER, IMAGES_PATH } from '../config';
+import { COVER_PLACEHOLDER, IMAGES_PATH } from '../constants/config';
 import { mapGenres } from '../helpers/helper';
 
 const ImgStyled = styled('img')({
