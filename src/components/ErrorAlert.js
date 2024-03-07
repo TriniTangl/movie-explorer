@@ -1,7 +1,7 @@
 import { Alert, AlertTitle } from '@mui/material';
 import { useEffect } from 'react';
 
-const ErrorAlert = ({ alert, onClose, autoHideDuration, ...props }) => {
+const ErrorAlert = ({ alert, autoHideDuration, onClose, ...props }) => {
   useEffect(() => {
     const showTimer = setTimeout(() => {
       onClose(alert.id);

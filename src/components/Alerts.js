@@ -21,16 +21,14 @@ const Alerts = () => {
   return (
     <Snackbar open={ Boolean(alerts.length) }>
       <Box>
-        {
-          alerts.map((alert) => (
-            <ErrorAlert
-              key={ alert.id }
-              alert={ alert }
-              onClose={ onClose }
-              autoHideDuration={ 5000 }
-            />
-          ))
-        }
+        { alerts.map((alert) => (
+          <ErrorAlert
+            key={ alert.id }
+            alert={ alert }
+            onClose={ onClose }
+            autoHideDuration={ 5000 }
+          />
+        )) }
       </Box>
     </Snackbar>
   );

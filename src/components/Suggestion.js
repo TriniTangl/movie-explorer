@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { COVER_PLACEHOLDER, IMAGES_PATH } from '../constants/config';
 import { mapGenres } from '../helpers/helper';
-import { searchMovies, resetState } from '../redux/search';
+import { resetState, searchMovies } from '../redux/search';
 
 const LinkStyled = styled(Link)({
   display: 'block',
@@ -23,7 +23,7 @@ const TypographyStyled = styled(Typography)({
   textWrap: 'wrap',
 });
 
-const Suggestion = ({ movies, genres }) => {
+const Suggestion = ({ genres, movies }) => {
   const dispatch = useDispatch();
   const theme = useTheme();
   const matchDownSm = useMediaQuery(theme.breakpoints.down('sm'));
@@ -58,21 +58,12 @@ const Suggestion = ({ movies, genres }) => {
           <LinkStyled to={ `/movie/${ movie.id }` }>
             <Grid container={ true } spacing={ 4 } wrap="nowrap">
               <Grid item={ true }>
-                {
-                  movie.poster_path
-                    ? (
-                      <ImgStyled
-                        src={ `${ IMAGES_PATH }/w154${ movie.poster_path }` }
-                        alt={ movie.title }
-                      />
-                    )
-                    : (
-                      <ImgStyled
-                        src={ COVER_PLACEHOLDER }
-                        alt={ movie.title }
-                      />
-                    )
-                }
+                <ImgStyled
+                  src={ movie.poster_path
+                    ? `${ IMAGES_PATH }/w154${ movie.poster_path }`
+                    : COVER_PLACEHOLDER }
+                  alt={ movie.title }
+                />
               </Grid>
               <Grid item={ true }>
                 <TypographyStyled variant={ matchDownSm ? 'h6' : 'h4' }>

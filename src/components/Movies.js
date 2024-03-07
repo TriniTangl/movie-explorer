@@ -13,39 +13,31 @@ const ImageListItemStyled = styled(ImageListItem)({
   overflow: 'hidden',
 });
 
-const Movies = ({ movies, genres }) => {
+const Movies = ({ genres, movies }) => {
   const theme = useTheme();
   const matchDownSm = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
-    <ImageList cols={ matchDownSm ? 1 : 5 } rowHeight={ matchDownSm ? 580 : 355 } gap={ 12 }>
-      {
-        movies.map((movie) => (
-          <ImageListItemStyled key={ movie.id }>
-            <Link to={ `/movie/${ movie.id }` }>
-              {
-                movie.poster_path
-                  ? (
-                    <ImgStyled
-                      src={ `${ IMAGES_PATH }/w300${ movie.poster_path }` }
-                      alt={ movie.title }
-                    />
-                  )
-                  : (
-                    <ImgStyled
-                      src={ COVER_PLACEHOLDER }
-                      alt={ movie.title }
-                    />
-                  )
-              }
-              <ImageListItemBar
-                title={ movie.title }
-                subtitle={ <span>{ mapGenres(movie.genre_ids, genres) }</span> }
-              />
-            </Link>
-          </ImageListItemStyled>
-        ))
-      }
+    <ImageList
+      cols={ matchDownSm ? 1 : 5 }
+      rowHeight={ matchDownSm ? 580 : 355 } gap={ 12 }
+    >
+      { movies.map((movie) => (
+        <ImageListItemStyled key={ movie.id }>
+          <Link to={ `/movie/${ movie.id }` }>
+            <ImgStyled
+              src={ movie.poster_path
+                ? `${ IMAGES_PATH }/w300${ movie.poster_path }`
+                : COVER_PLACEHOLDER }
+              alt={ movie.title }
+            />
+            <ImageListItemBar
+              title={ movie.title }
+              subtitle={ mapGenres(movie.genre_ids, genres) }
+            />
+          </Link>
+        </ImageListItemStyled>
+      )) }
     </ImageList>
   );
 };

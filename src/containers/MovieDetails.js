@@ -23,10 +23,16 @@ const MovieDetails = () => {
     };
   }, [dispatch, id]);
 
+  if (isFetchingMovie || isFetchingGenres) {
+    return (<Loader />);
+  }
+
   return (
-    isFetchingMovie || isFetchingGenres
-      ? <Loader />
-      : <Movie movie={ movie } recommendations={ recommendations } genres={ genres } />
+    <Movie
+      genres={ genres }
+      movie={ movie }
+      recommendations={ recommendations }
+    />
   );
 };
 

@@ -1,5 +1,5 @@
 import { nanoid } from '@reduxjs/toolkit';
-import { delay, all, call, put, takeLatest, takeLeading } from 'redux-saga/effects';
+import { all, call, delay, put, takeLatest, takeLeading } from 'redux-saga/effects';
 import TheMovieDbApi from '../api/api';
 import { AUTH_TOKEN } from '../constants/config';
 import { API_ERROR_MESSAGES } from '../constants/enums';
@@ -95,9 +95,9 @@ function* fetchMovie(action) {
 
 export default function* watcherSaga() {
   yield all([
-    yield takeLeading(getMovie.type, fetchMovie),
-    yield takeLeading(getPopularMovies.type, fetchPopularMovies),
     yield takeLeading(getGenres.type, fetchGenres),
+    yield takeLeading(getPopularMovies.type, fetchPopularMovies),
+    yield takeLeading(getMovie.type, fetchMovie),
     yield takeLatest(searchMovies.type, fetchSearchMovies),
   ]);
 }

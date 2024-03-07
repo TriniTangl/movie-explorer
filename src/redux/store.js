@@ -1,21 +1,21 @@
 import { configureStore } from '@reduxjs/toolkit';
-import watcherSaga from '../sagas';
-import searchReducer from './search';
-import genresReducer from './genres';
-import moviesReducer from './movies';
-import movieReducer from './movie';
-import alertsReducer from './alerts';
 import createSagaMiddleware from 'redux-saga';
+import watcherSaga from '../sagas';
+import alertsReducer from './alerts';
+import genresReducer from './genres';
+import movieReducer from './movie';
+import moviesReducer from './movies';
+import searchReducer from './search';
 
 const sagaMiddleware = createSagaMiddleware();
 
 const store = configureStore({
   reducer: {
-    search: searchReducer,
-    genres: genresReducer,
-    movies: moviesReducer,
-    movie: movieReducer,
     alerts: alertsReducer,
+    genres: genresReducer,
+    movie: movieReducer,
+    movies: moviesReducer,
+    search: searchReducer,
   },
   middleware: (getDefaultMiddleware) => {
     return getDefaultMiddleware({ thunk: false }).prepend(sagaMiddleware);

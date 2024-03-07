@@ -1,4 +1,4 @@
-import { Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { useEffect } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useDispatch, useSelector } from 'react-redux';
@@ -31,24 +31,26 @@ const PopularMovies = () => {
     }
   };
 
+  if (page === 0 && (isFetchingMovies || isFetchingGenres)) {
+    return (<Loader />);
+  }
+
   return (
-    page === 0 && (isFetchingMovies || isFetchingGenres)
-      ? <Loader />
-      : <>
-        <Typography component="h2" variant="h3" gutterBottom={ true }>
-          Popular Movies
-        </Typography>
-        <InfiniteScroll
-          dataLength={ totalResults }
-          next={ loadMore }
-          hasMore={ hasMore }
-          loader={ <Loader /> }
-          style={ { overflow: 'hidden' } }
-          endMessage={ <p>Yay! You have seen it all!</p> }
-        >
-          <Movies movies={ movies } genres={ genres } />
-        </InfiniteScroll>
-      </>
+    <Box>
+      <Typography component="h2" variant="h3" gutterBottom={ true }>
+        Popular Movies
+      </Typography>
+      <InfiniteScroll
+        dataLength={ totalResults }
+        next={ loadMore }
+        hasMore={ hasMore }
+        loader={ <Loader /> }
+        style={ { overflow: 'hidden' } }
+        endMessage={ <p>Yay! You have seen it all!</p> }
+      >
+        <Movies movies={ movies } genres={ genres } />
+      </InfiniteScroll>
+    </Box>
   );
 };
 
