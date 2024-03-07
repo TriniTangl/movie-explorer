@@ -35,16 +35,20 @@ const Suggestion = ({ movies, genres }) => {
   };
 
   const autocompleteOnChange = (event, value, reason) => {
-    if (reason === 'clear') {
+    if (reason === 'clear' || value === '') {
       dispatch(resetState());
     }
   };
 
   return (
     <Autocomplete
+      clearOnBlur={ false }
+      clearOnEscape={ false }
       getOptionLabel={ (movie) => movie.title }
       options={ movies }
       onChange={ autocompleteOnChange }
+      onInputChange={ autocompleteOnChange }
+      noOptionsText="Nothing to show. Type to start searching..."
       isOptionEqualToValue={ (option, value) => option.id === value.id }
       renderOption={ (props, movie) => (
         <MenuItem
