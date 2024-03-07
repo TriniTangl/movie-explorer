@@ -18,7 +18,7 @@ const Movies = ({ movies, genres }) => {
   const matchDownSm = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
-    <ImageList cols={ matchDownSm ? 1 : 5 } rowHeight={ matchDownSm ? 580 : 365 } gap={ 12 }>
+    <ImageList cols={ matchDownSm ? 1 : 5 } rowHeight={ matchDownSm ? 580 : 355 } gap={ 12 }>
       {
         movies.map((movie) => (
           <ImageListItemStyled key={ movie.id }>
