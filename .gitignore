@@ -57,7 +57,7 @@ jspm_packages/
 **/*.backup.*
 **/*.back.*
 
-node_modules
+build/
 
 *.sublime*
 
