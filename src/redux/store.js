@@ -4,6 +4,7 @@ import searchReducer from './search';
 import genresReducer from './genres';
 import moviesReducer from './movies';
 import movieReducer from './movie';
+import alertsReducer from './alerts';
 import createSagaMiddleware from 'redux-saga';
 
 const sagaMiddleware = createSagaMiddleware();
@@ -14,6 +15,7 @@ const store = configureStore({
     genres: genresReducer,
     movies: moviesReducer,
     movie: movieReducer,
+    alerts: alertsReducer,
   },
   middleware: (getDefaultMiddleware) => {
     return getDefaultMiddleware({ thunk: false }).prepend(sagaMiddleware);

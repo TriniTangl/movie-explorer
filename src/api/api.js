@@ -12,35 +12,19 @@ export default class TheMovieDbApi {
     };
   }
 
-  searchMovies = async (query) => {
-    const response = await fetch(
-      `${ this.apiBaseUrl }/search/movie?query=${ query }`, this.fetchOptions,
-    );
-
-    return response.json();
+  searchMovies = (query) => {
+    return fetch(`${ this.apiBaseUrl }/search/movie?query=${ query }`, this.fetchOptions);
   };
 
-  getGenres = async () => {
-    const response = await fetch(
-      `${ this.apiBaseUrl }/genre/movie/list?`, this.fetchOptions,
-    );
-
-    return response.json();
+  getGenres = () => {
+    return fetch(`${ this.apiBaseUrl }/genre/movie/list?`, this.fetchOptions);
   };
 
-  getPopularMovies = async (page = 1) => {
-    const response = await fetch(
-      `${ this.apiBaseUrl }/movie/popular?page=${ page }`, this.fetchOptions,
-    );
-
-    return response.json();
+  getPopularMovies = (page = 1) => {
+    return fetch(`${ this.apiBaseUrl }/movie/popular?page=${ page }`, this.fetchOptions);
   };
 
-  getMovie = async (id) => {
-    const response = await fetch(
-      `${ this.apiBaseUrl }/movie/${ id }?append_to_response=recommendations`, this.fetchOptions,
-    );
-
-    return response.json();
+  getMovie = (id) => {
+    return fetch(`${ this.apiBaseUrl }/movie/${ id }?append_to_response=recommendations`, this.fetchOptions);
   };
 }
