@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Loader from '../components/Loader';
 import Movies from '../components/Movies';
 import { getGenresState } from '../redux/genres';
-import { getMoviesState, getPopularMovies, resetState } from '../redux/movies';
+import { getMoviesState, getPopularMovies } from '../redux/movies';
 
 const PopularMovies = () => {
   const dispatch = useDispatch();
