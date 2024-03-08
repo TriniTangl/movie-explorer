@@ -19,10 +19,6 @@ const PopularMovies = () => {
 
   useEffect(() => {
     dispatch(getPopularMovies());
-
-    return () => {
-      dispatch(resetState());
-    };
   }, [dispatch]);
 
   const loadMore = () => {
