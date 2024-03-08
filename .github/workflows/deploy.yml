@@ -17,20 +17,22 @@ jobs:
       FILES_TO_COPY: ./build/*
       REMOTE_PATH: ${{ secrets.REMOTE_PATH }}
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
       - name: Setup SSH key
         run: |
           set -eu
           mkdir "$HOME/.ssh"
           echo "$SSH_PRIVATE_KEY" > "$HOME/.ssh/key"
           chmod 600 "$HOME/.ssh/key"
-      - name: Build
+      - name: Install Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
+      - name: Build app
         run: |
           npm install
           npm run build
-      - name: Deploy
+      - name: Deploy app
         run: rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress --delete $FILES_TO_COPY $USERNAME@$SERVER_IP:$REMOTE_PATH
         working-directory: ./
