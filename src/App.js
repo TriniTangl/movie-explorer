@@ -14,7 +14,7 @@ function App() {
   }, [dispatch]);
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/movie-explorer">
       <Layout>
         <Routes>
           <Route path="/" element={ <PopularMovies /> } />

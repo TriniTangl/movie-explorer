@@ -2,7 +2,7 @@
   "name": "movie-explorer",
   "version": "1.0.0",
   "private": true,
-  "homepage": "./",
+  "homepage": "https://vm4209002.43ssd.had.wf/movie-explorer/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
